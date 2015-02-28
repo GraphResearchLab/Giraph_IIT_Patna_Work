@@ -1,0 +1,931 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 128974848 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2798), pid=9461, tid=139878713673472
+#
+# JRE version: OpenJDK Runtime Environment (7.0_75-b13) (build 1.7.0_75-b13)
+# Java VM: OpenJDK 64-Bit Server VM (24.75-b04 mixed mode linux-amd64 compressed oops)
+# Derivative: IcedTea 2.5.4
+# Distribution: Ubuntu 14.04 LTS, package 7u75-2.5.4-1~trusty1
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f381407a800):  VMThread [stack: 0x00007f380cfa4000,0x00007f380d0a5000] [id=9472]
+
+Stack: [0x00007f380cfa4000,0x00007f380d0a5000],  sp=0x00007f380d0a3490,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x94a9d5]  VMError::report_and_die()+0x175
+V  [libjvm.so+0x48b954]  report_vm_out_of_memory(char const*, int, unsigned long, char const*)+0x74
+V  [libjvm.so+0x7c7b7b]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xeb
+V  [libjvm.so+0x7c263f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x834b1b]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x82486b]  PSOldGen::expand_by(unsigned long) [clone .part.80]+0x1b
+V  [libjvm.so+0x824a2b]  PSOldGen::expand(unsigned long) [clone .part.81]+0xdb
+V  [libjvm.so+0x825958]  PSOldGen::resize(unsigned long)+0x188
+V  [libjvm.so+0x82ca24]  PSParallelCompact::invoke_no_policy(bool)+0x9c4
+V  [libjvm.so+0x832c5d]  PSScavenge::invoke()+0x17d
+V  [libjvm.so+0x7e9203]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0x94c3d4]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0x9508d7]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x94f248]  VMThread::evaluate_operation(VM_Operation*)+0x318
+V  [libjvm.so+0x94f6a9]  VMThread::loop()+0x219
+V  [libjvm.so+0x94faf2]  VMThread::run()+0x72
+V  [libjvm.so+0x7c4a42]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007f37ddad4470): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f37cc2dc000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f37cc2dc000 JavaThread "load-0" [_thread_blocked, id=9536, stack(0x00007f37dd9d5000,0x00007f37ddad6000)]
+  0x00007f37ac18b000 JavaThread "netty-server-exec-0" [_thread_blocked, id=9534, stack(0x00007f37dc487000,0x00007f37dc588000)]
+  0x00007f3798001800 JavaThread "netty-server-worker-0" [_thread_blocked, id=9533, stack(0x00007f37dc588000,0x00007f37dc689000)]
+  0x00007f37a8001000 JavaThread "netty-client-exec-0" [_thread_blocked, id=9532, stack(0x00007f37dc689000,0x00007f37dc78a000)]
+  0x00007f379c003000 JavaThread "netty-server-exec-0" [_thread_blocked, id=9531, stack(0x00007f37dc78a000,0x00007f37dc88b000)]
+  0x00007f37cc2d6800 JavaThread "netty-client-worker-0" [_thread_blocked, id=9530, stack(0x00007f37dc88b000,0x00007f37dc98c000)]
+  0x0000000000a03000 JavaThread "netty-server-worker-0" [_thread_blocked, id=9529, stack(0x00007f37dc98c000,0x00007f37dca8d000)]
+  0x00007f3794002000 JavaThread "netty-client-exec-0" [_thread_blocked, id=9528, stack(0x00007f37dca8d000,0x00007f37dcb8e000)]
+  0x00007f37ac180800 JavaThread "netty-client-worker-0" [_thread_blocked, id=9527, stack(0x00007f37dcb8e000,0x00007f37dcc8f000)]
+  0x00007f37ac140000 JavaThread "netty-server-boss-3" [_thread_blocked, id=9524, stack(0x00007f37dcc8f000,0x00007f37dcd90000)]
+  0x00007f37ac13e800 JavaThread "netty-server-boss-2" [_thread_blocked, id=9523, stack(0x00007f37dcd90000,0x00007f37dce91000)]
+  0x00007f37cc28f000 JavaThread "netty-server-boss-2" [_thread_blocked, id=9522, stack(0x00007f37dce91000,0x00007f37dcf92000)]
+  0x00007f37ac13c000 JavaThread "netty-server-boss-1" [_thread_blocked, id=9521, stack(0x00007f37dcf92000,0x00007f37dd093000)]
+  0x00007f37cc28b000 JavaThread "netty-server-boss-1" [_thread_blocked, id=9519, stack(0x00007f37dd194000,0x00007f37dd295000)]
+  0x00007f37cc28c000 JavaThread "netty-server-boss-0" [_thread_blocked, id=9518, stack(0x00007f37dd295000,0x00007f37dd396000)]
+  0x00007f37ac13a800 JavaThread "netty-server-boss-0" [_thread_blocked, id=9517, stack(0x00007f37dd396000,0x00007f37dd497000)]
+  0x00007f37ac00f000 JavaThread "process reaper" daemon [_thread_blocked, id=9515, stack(0x00007f37dd497000,0x00007f37dd4d0000)]
+  0x00007f37cc15a800 JavaThread "pool-1-thread-1-EventThread" daemon [_thread_blocked, id=9513, stack(0x00007f37dd4d0000,0x00007f37dd5d1000)]
+  0x00007f37cc157000 JavaThread "pool-1-thread-1-SendThread(localhost:22181)" daemon [_thread_in_native, id=9512, stack(0x00007f37dd5d1000,0x00007f37dd6d2000)]
+  0x00007f37cc12c800 JavaThread "org.apache.giraph.master.MasterThread" [_thread_blocked, id=9511, stack(0x00007f37dd6d2000,0x00007f37dd7d3000)]
+  0x00007f37cc0ae800 JavaThread "pool-1-thread-1-EventThread" daemon [_thread_blocked, id=9510, stack(0x00007f37dd7d3000,0x00007f37dd8d4000)]
+  0x00007f37cc12f000 JavaThread "pool-1-thread-1-SendThread(localhost:22181)" daemon [_thread_in_native, id=9509, stack(0x00007f37dd8d4000,0x00007f37dd9d5000)]
+  0x00007f37cc092000 JavaThread "metrics-meter-tick-thread-2" daemon [_thread_blocked, id=9491, stack(0x00007f37ddad6000,0x00007f37ddbd7000)]
+  0x00007f37cc091000 JavaThread "metrics-meter-tick-thread-1" daemon [_thread_blocked, id=9490, stack(0x00007f37ddbd7000,0x00007f37ddcd8000)]
+  0x00007f37cc019000 JavaThread "process reaper" daemon [_thread_blocked, id=9484, stack(0x00007f37ddcd8000,0x00007f37ddd11000)]
+  0x00007f37cc00d000 JavaThread "communication thread" daemon [_thread_blocked, id=9482, stack(0x00007f37ddd11000,0x00007f37dde12000)]
+  0x00007f37d400d000 JavaThread "pool-1-thread-1" [_thread_blocked, id=9481, stack(0x00007f37dde12000,0x00007f37ddf13000)]
+  0x00007f38148bb800 JavaThread "Thread-1" [_thread_blocked, id=9480, stack(0x00007f37ddf13000,0x00007f37de014000)]
+  0x00007f38140b5000 JavaThread "Service Thread" daemon [_thread_blocked, id=9478, stack(0x00007f380c2bc000,0x00007f380c3bd000)]
+  0x00007f38140b3000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=9477, stack(0x00007f380c3bd000,0x00007f380c4be000)]
+  0x00007f38140b0000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=9476, stack(0x00007f380c4be000,0x00007f380c5bf000)]
+  0x00007f38140ae000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=9475, stack(0x00007f380c5bf000,0x00007f380c6c0000)]
+  0x00007f3814081000 JavaThread "Finalizer" daemon [_thread_blocked, id=9474, stack(0x00007f380cda2000,0x00007f380cea3000)]
+  0x00007f381407f000 JavaThread "Reference Handler" daemon [_thread_blocked, id=9473, stack(0x00007f380cea3000,0x00007f380cfa4000)]
+  0x00007f381400f000 JavaThread "main" [_thread_blocked, id=9463, stack(0x00007f381b44e000,0x00007f381b54f000)]
+
+Other Threads:
+=>0x00007f381407a800 VMThread [stack: 0x00007f380cfa4000,0x00007f380d0a5000] [id=9472]
+  0x00007f38140c0000 WatcherThread [stack: 0x00007f380c1bb000,0x00007f380c2bc000] [id=9479]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f381400b1e0] ExpandHeap_lock - owner thread: 0x00007f381407a800
+[0x00007f381400b860] Threads_lock - owner thread: 0x00007f381407a800
+[0x00007f381400bd60] Heap_lock - owner thread: 0x00007f37cc2dc000
+
+Heap
+ PSYoungGen      total 218624K, used 33035K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 109568K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2b00000)
+  from space 109056K, 30% used [0x00000000f9580000,0x00000000fb5c2d40,0x0000000100000000)
+  to   space 109056K, 0% used [0x00000000f2b00000,0x00000000f2b00000,0x00000000f9580000)
+ ParOldGen       total 314880K, used 314571K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 99% used [0x00000000c4000000,0x00000000d7332ec0,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+
+Card table byte_map: [0x00007f3810dcc000,0x00007f3811000000] byte_map_base: 0x00007f38107ff000
+
+Polling page: 0x00007f381b570000
+
+Code Cache  [0x00007f3811000000, 0x00007f3811270000, 0x00007f3814000000)
+ total_blobs=774 nmethods=403 adapters=324 free_code_cache=47764Kb largest_free_block=48844608
+
+Compilation events (10 events):
+Event: 19.670 Thread 0x00007f38140b0000 nmethod 415 0x00007f381115f110 code [0x00007f381115f360, 0x00007f3811160910]
+Event: 19.670 Thread 0x00007f38140b0000  416             org.apache.hadoop.fs.FSInputChecker::read1 (99 bytes)
+Event: 19.687 Thread 0x00007f38140b3000 nmethod 412 0x00007f3811165f10 code [0x00007f3811166200, 0x00007f3811168668]
+Event: 19.688 Thread 0x00007f38140b3000  417   !         org.apache.hadoop.fs.FSInputChecker::readChecksumChunk (194 bytes)
+Event: 19.697 Thread 0x00007f38140b3000 nmethod 417 0x00007f38110db4d0 code [0x00007f38110db660, 0x00007f38110dbd38]
+Event: 19.697 Thread 0x00007f38140b3000  418   !         org.apache.hadoop.fs.ChecksumFileSystem$ChecksumFSInputChecker::readChunk (149 bytes)
+Event: 19.699 Thread 0x00007f38140b0000 nmethod 416 0x00007f3811076590 code [0x00007f3811076760, 0x00007f3811077150]
+Event: 19.702 Thread 0x00007f38140b3000 nmethod 418 0x00007f3811071d50 code [0x00007f3811071ec0, 0x00007f38110722f8]
+Event: 27.217 Thread 0x00007f38140b0000  419  s!         java.util.Hashtable::clone (98 bytes)
+Event: 27.234 Thread 0x00007f38140b0000 nmethod 419 0x00007f38110d95d0 code [0x00007f38110d9780, 0x00007f38110da098]
+
+GC Heap History (10 events):
+Event: 28.866 GC heap after
+Heap after GC invocations=32 (full 4):
+ PSYoungGen      total 212480K, used 57303K [0x00000000ec000000, 0x00000000ffa00000, 0x0000000100000000)
+  eden space 109568K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2b00000)
+  from space 102912K, 55% used [0x00000000f9580000,0x00000000fcd75f10,0x00000000ffa00000)
+  to   space 105984K, 0% used [0x00000000f2b00000,0x00000000f2b00000,0x00000000f9280000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+}
+Event: 29.472 GC heap before
+{Heap before GC invocations=33 (full 4):
+ PSYoungGen      total 212480K, used 166871K [0x00000000ec000000, 0x00000000ffa00000, 0x0000000100000000)
+  eden space 109568K, 100% used [0x00000000ec000000,0x00000000f2b00000,0x00000000f2b00000)
+  from space 102912K, 55% used [0x00000000f9580000,0x00000000fcd75f10,0x00000000ffa00000)
+  to   space 105984K, 0% used [0x00000000f2b00000,0x00000000f2b00000,0x00000000f9280000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+Event: 29.518 GC heap after
+Heap after GC invocations=33 (full 4):
+ PSYoungGen      total 215552K, used 64371K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 109568K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2b00000)
+  from space 105984K, 60% used [0x00000000f2b00000,0x00000000f69dce40,0x00000000f9280000)
+  to   space 105472K, 0% used [0x00000000f9900000,0x00000000f9900000,0x0000000100000000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+}
+Event: 30.183 GC heap before
+{Heap before GC invocations=34 (full 4):
+ PSYoungGen      total 215552K, used 173939K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 109568K, 100% used [0x00000000ec000000,0x00000000f2b00000,0x00000000f2b00000)
+  from space 105984K, 60% used [0x00000000f2b00000,0x00000000f69dce40,0x00000000f9280000)
+  to   space 105472K, 0% used [0x00000000f9900000,0x00000000f9900000,0x0000000100000000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+Event: 30.268 GC heap after
+Heap after GC invocations=34 (full 4):
+ PSYoungGen      total 217088K, used 72584K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 111616K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2d00000)
+  from space 105472K, 68% used [0x00000000f9900000,0x00000000fdfe2160,0x0000000100000000)
+  to   space 108032K, 0% used [0x00000000f2d00000,0x00000000f2d00000,0x00000000f9680000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+}
+Event: 30.740 GC heap before
+{Heap before GC invocations=35 (full 4):
+ PSYoungGen      total 217088K, used 184200K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 111616K, 100% used [0x00000000ec000000,0x00000000f2d00000,0x00000000f2d00000)
+  from space 105472K, 68% used [0x00000000f9900000,0x00000000fdfe2160,0x0000000100000000)
+  to   space 108032K, 0% used [0x00000000f2d00000,0x00000000f2d00000,0x00000000f9680000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+Event: 30.886 GC heap after
+Heap after GC invocations=35 (full 4):
+ PSYoungGen      total 192512K, used 80651K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 111616K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2d00000)
+  from space 80896K, 99% used [0x00000000f2d00000,0x00000000f7bc2d30,0x00000000f7c00000)
+  to   space 109056K, 0% used [0x00000000f9580000,0x00000000f9580000,0x0000000100000000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+}
+Event: 31.300 GC heap before
+{Heap before GC invocations=36 (full 4):
+ PSYoungGen      total 192512K, used 192267K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 111616K, 100% used [0x00000000ec000000,0x00000000f2d00000,0x00000000f2d00000)
+  from space 80896K, 99% used [0x00000000f2d00000,0x00000000f7bc2d30,0x00000000f7c00000)
+  to   space 109056K, 0% used [0x00000000f9580000,0x00000000f9580000,0x0000000100000000)
+ ParOldGen       total 314880K, used 261013K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 82% used [0x00000000c4000000,0x00000000d3ee54d8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+Event: 32.893 GC heap after
+Heap after GC invocations=36 (full 4):
+ PSYoungGen      total 218624K, used 65368K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 109568K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2b00000)
+  from space 109056K, 59% used [0x00000000f9580000,0x00000000fd556180,0x0000000100000000)
+  to   space 109056K, 0% used [0x00000000f2b00000,0x00000000f2b00000,0x00000000f9580000)
+ ParOldGen       total 314880K, used 285509K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 90% used [0x00000000c4000000,0x00000000d56d16f8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+}
+Event: 33.412 GC heap before
+{Heap before GC invocations=37 (full 5):
+ PSYoungGen      total 218624K, used 65368K [0x00000000ec000000, 0x0000000100000000, 0x0000000100000000)
+  eden space 109568K, 0% used [0x00000000ec000000,0x00000000ec000000,0x00000000f2b00000)
+  from space 109056K, 59% used [0x00000000f9580000,0x00000000fd556180,0x0000000100000000)
+  to   space 109056K, 0% used [0x00000000f2b00000,0x00000000f2b00000,0x00000000f9580000)
+ ParOldGen       total 314880K, used 285509K [0x00000000c4000000, 0x00000000d7380000, 0x00000000ec000000)
+  object space 314880K, 90% used [0x00000000c4000000,0x00000000d56d16f8,0x00000000d7380000)
+ PSPermGen       total 38912K, used 18741K [0x00000000b9a00000, 0x00000000bc000000, 0x00000000c4000000)
+  object space 38912K, 48% used [0x00000000b9a00000,0x00000000bac4d538,0x00000000bc000000)
+
+Deoptimization events (10 events):
+Event: 11.637 Thread 0x00007f37cc2dc000 Uncommon trap: reason=unloaded action=reinterpret pc=0x00007f381114c300 method=org.apache.giraph.worker.VertexInputSplitsCallable.readInputSplit(Lorg/apache/hadoop/mapreduce/InputSplit;)Lorg/apache/giraph/graph/VertexEdgeCount; @ 479
+Event: 11.637 Thread 0x00007f37cc2dc000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f38110f8c9c method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 11.637 Thread 0x00007f37cc2dc000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f38110f8c9c method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 11.637 Thread 0x00007f37cc2dc000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f38110f8c9c method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 11.637 Thread 0x00007f37cc2dc000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f38110f8c9c method=java.util.regex.Pattern$BmpCharProperty.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 16
+Event: 11.639 Thread 0x00007f37cc2dc000 Uncommon trap: reason=unreached action=reinterpret pc=0x00007f3811118c1c method=java.lang.ThreadLocal$ThreadLocalMap.getEntry(Ljava/lang/ThreadLocal;)Ljava/lang/ThreadLocal$ThreadLocalMap$Entry; @ 29
+Event: 18.507 Thread 0x00007f37cc2dc000 Uncommon trap: reason=unloaded action=reinterpret pc=0x00007f38111516fc method=org.apache.giraph.worker.VertexInputSplitsCallable.readInputSplit(Lorg/apache/hadoop/mapreduce/InputSplit;)Lorg/apache/giraph/graph/VertexEdgeCount; @ 676
+Event: 18.508 Thread 0x00007f37cc157000 Uncommon trap: reason=unreached action=reinterpret pc=0x00007f38111203c0 method=java.lang.Object.equals(Ljava/lang/Object;)Z @ 2
+Event: 18.554 Thread 0x00007f37cc2dc000 Uncommon trap: reason=unreached action=reinterpret pc=0x00007f381111c534 method=org.apache.hadoop.mapreduce.lib.input.LineRecordReader.nextKeyValue()Z @ 4
+Event: 27.242 Thread 0x00007f37cc2dc000 Uncommon trap: reason=unreached action=reinterpret pc=0x00007f3811155c94 method=org.apache.hadoop.mapreduce.lib.input.LineRecordReader.nextKeyValue()Z @ 4
+
+Internal exceptions (10 events):
+Event: 10.660 Thread 0x00007f37cc00d000 Threw 0x00000000ec6d1dd8 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 10.661 Thread 0x00007f37cc00d000 Threw 0x00000000ec6db848 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 10.661 Thread 0x00007f37cc00d000 Threw 0x00000000ec6e3e98 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 10.661 Thread 0x00007f37cc00d000 Threw 0x00000000ec6edf10 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 10.661 Thread 0x00007f37cc00d000 Threw 0x00000000ec6f6e00 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 10.774 Thread 0x00007f381400f000 Threw 0x00000000edae1cd8 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 10.775 Thread 0x00007f381400f000 Threw 0x00000000edaf4af0 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 11.639 Thread 0x00007f37cc2dc000 Threw 0x00000000f4465310 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 11.777 Thread 0x00007f381400f000 Threw 0x00000000f63810b8 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+Event: 11.779 Thread 0x00007f381400f000 Threw 0x00000000f63937d0 at /build/buildd/openjdk-7-7u75-2.5.4/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1284
+
+Events (10 events):
+Event: 27.919 Executing VM operation: ParallelGCFailedAllocation done
+Event: 28.243 Executing VM operation: ParallelGCFailedAllocation
+Event: 28.866 Executing VM operation: ParallelGCFailedAllocation done
+Event: 29.472 Executing VM operation: ParallelGCFailedAllocation
+Event: 29.518 Executing VM operation: ParallelGCFailedAllocation done
+Event: 30.183 Executing VM operation: ParallelGCFailedAllocation
+Event: 30.268 Executing VM operation: ParallelGCFailedAllocation done
+Event: 30.740 Executing VM operation: ParallelGCFailedAllocation
+Event: 30.886 Executing VM operation: ParallelGCFailedAllocation done
+Event: 31.300 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:03 3041900                            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+00600000-00601000 r--p 00000000 08:03 3041900                            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+00601000-00602000 rw-p 00001000 08:03 3041900                            /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+009fc000-00a1d000 rw-p 00000000 00:00 0                                  [heap]
+b9a00000-bc000000 rw-p 00000000 00:00 0 
+bc000000-bc380000 ---p 00000000 00:00 0 
+bc380000-c4000000 rw-p 00000000 00:00 0 
+c4000000-d7380000 rw-p 00000000 00:00 0 
+dee80000-ec000000 rw-p 00000000 00:00 0 
+ec000000-100000000 rw-p 00000000 00:00 0 
+7f378c000000-7f378c021000 rw-p 00000000 00:00 0 
+7f378c021000-7f3790000000 ---p 00000000 00:00 0 
+7f3794000000-7f3794021000 rw-p 00000000 00:00 0 
+7f3794021000-7f3798000000 ---p 00000000 00:00 0 
+7f3798000000-7f3798021000 rw-p 00000000 00:00 0 
+7f3798021000-7f379c000000 ---p 00000000 00:00 0 
+7f379c000000-7f379c086000 rw-p 00000000 00:00 0 
+7f379c086000-7f37a0000000 ---p 00000000 00:00 0 
+7f37a0000000-7f37a0244000 rw-p 00000000 00:00 0 
+7f37a0244000-7f37a4000000 ---p 00000000 00:00 0 
+7f37a4000000-7f37a4021000 rw-p 00000000 00:00 0 
+7f37a4021000-7f37a8000000 ---p 00000000 00:00 0 
+7f37a8000000-7f37a8021000 rw-p 00000000 00:00 0 
+7f37a8021000-7f37ac000000 ---p 00000000 00:00 0 
+7f37ac000000-7f37ac19d000 rw-p 00000000 00:00 0 
+7f37ac19d000-7f37b0000000 ---p 00000000 00:00 0 
+7f37b0000000-7f37b0021000 rw-p 00000000 00:00 0 
+7f37b0021000-7f37b4000000 ---p 00000000 00:00 0 
+7f37b4000000-7f37b4021000 rw-p 00000000 00:00 0 
+7f37b4021000-7f37b8000000 ---p 00000000 00:00 0 
+7f37b8000000-7f37b8021000 rw-p 00000000 00:00 0 
+7f37b8021000-7f37bc000000 ---p 00000000 00:00 0 
+7f37bc000000-7f37bc021000 rw-p 00000000 00:00 0 
+7f37bc021000-7f37c0000000 ---p 00000000 00:00 0 
+7f37c0000000-7f37c0021000 rw-p 00000000 00:00 0 
+7f37c0021000-7f37c4000000 ---p 00000000 00:00 0 
+7f37c4000000-7f37c4021000 rw-p 00000000 00:00 0 
+7f37c4021000-7f37c8000000 ---p 00000000 00:00 0 
+7f37c8000000-7f37c8021000 rw-p 00000000 00:00 0 
+7f37c8021000-7f37cc000000 ---p 00000000 00:00 0 
+7f37cc000000-7f37cc2e8000 rw-p 00000000 00:00 0 
+7f37cc2e8000-7f37d0000000 ---p 00000000 00:00 0 
+7f37d0000000-7f37d0021000 rw-p 00000000 00:00 0 
+7f37d0021000-7f37d4000000 ---p 00000000 00:00 0 
+7f37d4000000-7f37d4021000 rw-p 00000000 00:00 0 
+7f37d4021000-7f37d8000000 ---p 00000000 00:00 0 
+7f37d8000000-7f37d8021000 rw-p 00000000 00:00 0 
+7f37d8021000-7f37dc000000 ---p 00000000 00:00 0 
+7f37dc487000-7f37dc48a000 ---p 00000000 00:00 0 
+7f37dc48a000-7f37dc588000 rw-p 00000000 00:00 0                          [stack:9534]
+7f37dc588000-7f37dc58b000 ---p 00000000 00:00 0 
+7f37dc58b000-7f37dc689000 rw-p 00000000 00:00 0                          [stack:9533]
+7f37dc689000-7f37dc68c000 ---p 00000000 00:00 0 
+7f37dc68c000-7f37dc78a000 rw-p 00000000 00:00 0                          [stack:9532]
+7f37dc78a000-7f37dc78d000 ---p 00000000 00:00 0 
+7f37dc78d000-7f37dc88b000 rw-p 00000000 00:00 0                          [stack:9531]
+7f37dc88b000-7f37dc88e000 ---p 00000000 00:00 0 
+7f37dc88e000-7f37dc98c000 rw-p 00000000 00:00 0                          [stack:9530]
+7f37dc98c000-7f37dc98f000 ---p 00000000 00:00 0 
+7f37dc98f000-7f37dca8d000 rw-p 00000000 00:00 0                          [stack:9529]
+7f37dca8d000-7f37dca90000 ---p 00000000 00:00 0 
+7f37dca90000-7f37dcb8e000 rw-p 00000000 00:00 0                          [stack:9528]
+7f37dcb8e000-7f37dcb91000 ---p 00000000 00:00 0 
+7f37dcb91000-7f37dcc8f000 rw-p 00000000 00:00 0                          [stack:9527]
+7f37dcc8f000-7f37dcc92000 ---p 00000000 00:00 0 
+7f37dcc92000-7f37dcd90000 rw-p 00000000 00:00 0                          [stack:9524]
+7f37dcd90000-7f37dcd93000 ---p 00000000 00:00 0 
+7f37dcd93000-7f37dce91000 rw-p 00000000 00:00 0                          [stack:9523]
+7f37dce91000-7f37dce94000 ---p 00000000 00:00 0 
+7f37dce94000-7f37dcf92000 rw-p 00000000 00:00 0                          [stack:9522]
+7f37dcf92000-7f37dcf95000 ---p 00000000 00:00 0 
+7f37dcf95000-7f37dd093000 rw-p 00000000 00:00 0                          [stack:9521]
+7f37dd093000-7f37dd096000 ---p 00000000 00:00 0 
+7f37dd096000-7f37dd194000 rw-p 00000000 00:00 0 
+7f37dd194000-7f37dd197000 ---p 00000000 00:00 0 
+7f37dd197000-7f37dd295000 rw-p 00000000 00:00 0                          [stack:9519]
+7f37dd295000-7f37dd298000 ---p 00000000 00:00 0 
+7f37dd298000-7f37dd396000 rw-p 00000000 00:00 0                          [stack:9518]
+7f37dd396000-7f37dd399000 ---p 00000000 00:00 0 
+7f37dd399000-7f37dd497000 rw-p 00000000 00:00 0                          [stack:9517]
+7f37dd497000-7f37dd49a000 ---p 00000000 00:00 0 
+7f37dd49a000-7f37dd4d0000 rw-p 00000000 00:00 0                          [stack:9515]
+7f37dd4d0000-7f37dd4d3000 ---p 00000000 00:00 0 
+7f37dd4d3000-7f37dd5d1000 rw-p 00000000 00:00 0                          [stack:9513]
+7f37dd5d1000-7f37dd5d4000 ---p 00000000 00:00 0 
+7f37dd5d4000-7f37dd6d2000 rw-p 00000000 00:00 0                          [stack:9512]
+7f37dd6d2000-7f37dd6d5000 ---p 00000000 00:00 0 
+7f37dd6d5000-7f37dd7d3000 rw-p 00000000 00:00 0                          [stack:9511]
+7f37dd7d3000-7f37dd7d6000 ---p 00000000 00:00 0 
+7f37dd7d6000-7f37dd8d4000 rw-p 00000000 00:00 0                          [stack:9510]
+7f37dd8d4000-7f37dd8d7000 ---p 00000000 00:00 0 
+7f37dd8d7000-7f37dd9d5000 rw-p 00000000 00:00 0                          [stack:9509]
+7f37dd9d5000-7f37dd9d8000 ---p 00000000 00:00 0 
+7f37dd9d8000-7f37ddad6000 rw-p 00000000 00:00 0                          [stack:9536]
+7f37ddad6000-7f37ddad9000 ---p 00000000 00:00 0 
+7f37ddad9000-7f37ddbd7000 rw-p 00000000 00:00 0                          [stack:9491]
+7f37ddbd7000-7f37ddbda000 ---p 00000000 00:00 0 
+7f37ddbda000-7f37ddcd8000 rw-p 00000000 00:00 0                          [stack:9490]
+7f37ddcd8000-7f37ddcdb000 ---p 00000000 00:00 0 
+7f37ddcdb000-7f37ddd11000 rw-p 00000000 00:00 0                          [stack:9484]
+7f37ddd11000-7f37ddd14000 ---p 00000000 00:00 0 
+7f37ddd14000-7f37dde12000 rw-p 00000000 00:00 0                          [stack:9482]
+7f37dde12000-7f37dde15000 ---p 00000000 00:00 0 
+7f37dde15000-7f37ddf13000 rw-p 00000000 00:00 0                          [stack:9481]
+7f37ddf13000-7f37ddf16000 ---p 00000000 00:00 0 
+7f37ddf16000-7f37de014000 rw-p 00000000 00:00 0                          [stack:9480]
+7f37de014000-7f37de015000 r-xp 00000000 08:03 3421488                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjaas_unix.so
+7f37de015000-7f37de214000 ---p 00001000 08:03 3421488                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjaas_unix.so
+7f37de214000-7f37de215000 r--p 00000000 08:03 3421488                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjaas_unix.so
+7f37de215000-7f37de216000 rw-p 00001000 08:03 3421488                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjaas_unix.so
+7f37de216000-7f37de21e000 r-xp 00000000 08:03 3421490                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libmanagement.so
+7f37de21e000-7f37de41d000 ---p 00008000 08:03 3421490                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libmanagement.so
+7f37de41d000-7f37de41e000 r--p 00007000 08:03 3421490                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libmanagement.so
+7f37de41e000-7f37de41f000 rw-p 00008000 08:03 3421490                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libmanagement.so
+7f37de41f000-7f37de450000 rw-p 00000000 00:00 0 
+7f37de450000-7f37de48d000 r-xp 00000000 08:03 3805223                    /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f37de48d000-7f37de68c000 ---p 0003d000 08:03 3805223                    /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f37de68c000-7f37de68d000 r--p 0003c000 08:03 3805223                    /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f37de68d000-7f37de68e000 rw-p 0003d000 08:03 3805223                    /lib/x86_64-linux-gnu/libpcre.so.3.13.1
+7f37de68e000-7f37de695000 r-xp 00000000 08:03 1974609                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f37de695000-7f37de894000 ---p 00007000 08:03 1974609                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f37de894000-7f37de895000 r--p 00006000 08:03 1974609                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f37de895000-7f37de896000 rw-p 00007000 08:03 1974609                    /usr/lib/x86_64-linux-gnu/libffi.so.6.0.1
+7f37de896000-7f37de8ad000 r-xp 00000000 08:03 3808090                    /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f37de8ad000-7f37deaad000 ---p 00017000 08:03 3808090                    /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f37deaad000-7f37deaae000 r--p 00017000 08:03 3808090                    /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f37deaae000-7f37deaaf000 rw-p 00018000 08:03 3808090                    /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f37deaaf000-7f37deab1000 rw-p 00000000 00:00 0 
+7f37deab1000-7f37dead1000 r-xp 00000000 08:03 3805250                    /lib/x86_64-linux-gnu/libselinux.so.1
+7f37dead1000-7f37decd0000 ---p 00020000 08:03 3805250                    /lib/x86_64-linux-gnu/libselinux.so.1
+7f37decd0000-7f37decd1000 r--p 0001f000 08:03 3805250                    /lib/x86_64-linux-gnu/libselinux.so.1
+7f37decd1000-7f37decd2000 rw-p 00020000 08:03 3805250                    /lib/x86_64-linux-gnu/libselinux.so.1
+7f37decd2000-7f37decd4000 rw-p 00000000 00:00 0 
+7f37decd4000-7f37decd7000 r-xp 00000000 08:03 1966444                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f37decd7000-7f37deed6000 ---p 00003000 08:03 1966444                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f37deed6000-7f37deed7000 r--p 00002000 08:03 1966444                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f37deed7000-7f37deed8000 rw-p 00003000 08:03 1966444                    /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.4002.0
+7f37deed8000-7f37defde000 r-xp 00000000 08:03 3805065                    /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f37defde000-7f37df1dd000 ---p 00106000 08:03 3805065                    /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f37df1dd000-7f37df1de000 r--p 00105000 08:03 3805065                    /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f37df1de000-7f37df1df000 rw-p 00106000 08:03 3805065                    /lib/x86_64-linux-gnu/libglib-2.0.so.0.4002.0
+7f37df1df000-7f37df1e0000 rw-p 00000000 00:00 0 
+7f37df1e0000-7f37df22f000 r-xp 00000000 08:03 1966462                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f37df22f000-7f37df42f000 ---p 0004f000 08:03 1966462                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f37df42f000-7f37df430000 r--p 0004f000 08:03 1966462                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f37df430000-7f37df431000 rw-p 00050000 08:03 1966462                    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.4002.0
+7f37df431000-7f37df59d000 r-xp 00000000 08:03 1966466                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f37df59d000-7f37df79c000 ---p 0016c000 08:03 1966466                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f37df79c000-7f37df7a0000 r--p 0016b000 08:03 1966466                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f37df7a0000-7f37df7a2000 rw-p 0016f000 08:03 1966466                    /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.4002.0
+7f37df7a2000-7f37df7a4000 rw-p 00000000 00:00 0 
+7f37df7a6000-7f37df7a7000 rw-p 00000000 00:00 0 
+7f37df7a7000-7f37df7b1000 r--s 00203000 08:03 3180411                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar
+7f37df7b1000-7f37df7b4000 r--s 00017000 08:03 3177118                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar
+7f37df7b4000-7f37df7b8000 r--s 0004d000 08:03 3180408                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar
+7f37df7b8000-7f37df7c1000 r--s 000b9000 08:03 3180407                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar
+7f37df7c1000-7f37df7d8000 r-xp 00000000 08:03 3421486                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnet.so
+7f37df7d8000-7f37df9d7000 ---p 00017000 08:03 3421486                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnet.so
+7f37df9d7000-7f37df9d8000 r--p 00016000 08:03 3421486                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnet.so
+7f37df9d8000-7f37df9d9000 rw-p 00017000 08:03 3421486                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnet.so
+7f37df9d9000-7f37df9e9000 r-xp 00000000 08:03 3421482                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnio.so
+7f37df9e9000-7f37dfbe9000 ---p 00010000 08:03 3421482                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnio.so
+7f37dfbe9000-7f37dfbea000 r--p 00010000 08:03 3421482                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnio.so
+7f37dfbea000-7f37dfbeb000 rw-p 00011000 08:03 3421482                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libnio.so
+7f37dfbeb000-7f37dfbf0000 r--s 00040000 08:03 3418916                    /usr/local/hadoop/lib/commons-httpclient-3.0.1.jar
+7f37dfbf0000-7f37dfbf2000 r--s 0000d000 08:03 3418887                    /usr/local/hadoop/lib/commons-logging-1.1.1.jar
+7f37dfbf2000-7f37dfc2c000 r--s 003c9000 08:03 1977934                    /usr/local/hadoop/hadoop-core-1.2.1.jar
+7f37dfc2c000-7f37dfc38000 r--s 000b3000 08:03 4595487                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/zookeeper-3.4.5.jar
+7f37dfc38000-7f37dfc3a000 r--s 00014000 08:03 4595478                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/yjp-controller-api-redist-11.0.10.jar
+7f37dfc3a000-7f37dfc3e000 r--s 00014000 08:03 4595565                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/xz-1.0.jar
+7f37dfc3e000-7f37dfc42000 r--s 00024000 08:03 4595541                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/xmlschema-core-2.0.1.jar
+7f37dfc42000-7f37dfc47000 r--s 00020000 08:03 4595546                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/wsdl4j-1.6.2.jar
+7f37dfc47000-7f37dfc4c000 r--s 00070000 08:03 4595542                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/woodstox-core-asl-4.1.1.jar
+7f37dfc4c000-7f37dfc54000 r--s 00066000 08:03 4595515                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/velocity-1.7.jar
+7f37dfc54000-7f37dfc58000 r--s 0000c000 08:03 4595460                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/validation-api-1.1.0.Final.jar
+7f37dfc58000-7f37dfc5a000 r--s 00002000 08:03 4595459                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/units-0.91.jar
+7f37dfc5a000-7f37dfc5b000 r--s 00001000 08:03 4595492                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/typetools-0.2.1.jar
+7f37dfc5b000-7f37dfc5e000 r--s 00016000 08:03 4595467                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/swift-service-0.13.1.jar
+7f37dfc5e000-7f37dfc63000 r--s 0002b000 08:03 4595465                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/swift-codec-0.13.1.jar
+7f37dfc63000-7f37dfc65000 r--s 00001000 08:03 4595464                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/swift-annotations-0.13.1.jar
+7f37dfc65000-7f37dfc68000 r--s 00022000 08:03 4595502                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/stringtemplate-3.2.1.jar
+7f37dfc68000-7f37dfc6a000 r--s 00005000 08:03 4595569                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/stax-api-1.0.1.jar
+7f37dfc6a000-7f37dfc6e000 r--s 00029000 08:03 4595543                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/stax2-api-3.1.1.jar
+7f37dfc6e000-7f37dfc70000 r--s 00019000 08:03 4595473                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/stats-0.91.jar
+7f37dfc70000-7f37dfc74000 r--s 00036000 08:03 4595504                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/ST4-4.0.4.jar
+7f37dfc74000-7f37dfc7e000 r--s 00058000 08:03 4595556                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-web-3.0.6.RELEASE.jar
+7f37dfc7e000-7f37dfc82000 r--s 00026000 08:03 4595560                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-expression-3.0.6.RELEASE.jar
+7f37dfc82000-7f37dfc8b000 r--s 00055000 08:03 4595550                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-core-3.0.6.RELEASE.jar
+7f37dfc8b000-7f37dfc9c000 r--s 00093000 08:03 4595558                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-context-3.0.6.RELEASE.jar
+7f37dfc9c000-7f37dfca7000 r--s 0007d000 08:03 4595557                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-beans-3.0.6.RELEASE.jar
+7f37dfca7000-7f37dfca8000 r--s 0000c000 08:03 4595551                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-asm-3.0.6.RELEASE.jar
+7f37dfca8000-7f37dfcb1000 r--s 00046000 08:03 4595559                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/spring-aop-3.0.6.RELEASE.jar
+7f37dfcb1000-7f37dfcb3000 r--s 00130000 08:03 4595563                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/snappy-java-1.0.5.jar
+7f37dfcb3000-7f37dfcb4000 r--s 00009000 08:03 4595476                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/slice-0.5.jar
+7f37dfcb4000-7f37dfcb6000 r--s 0001f000 08:03 4595514                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/servlet-api-2.5-20081211.jar
+7f37dfcb6000-7f37dfcb8000 r--s 00009000 08:03 4595575                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/rexster-core-2.4.0.jar
+7f37dfcb8000-7f37dfcbe000 r--s 00068000 08:03 4595524                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/protobuf-java-2.4.1.jar
+7f37dfcbe000-7f37dfcc0000 r--s 00006000 08:03 4595466                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/paranamer-2.5.2.jar
+7f37dfcc0000-7f37dfcc3000 r--s 00012000 08:03 4595454                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/nifty-core-0.13.1.jar
+7f37dfcc3000-7f37dfcc6000 r--s 0000f000 08:03 4595453                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/nifty-client-0.13.1.jar
+7f37dfcc6000-7f37dfce0000 r--s 00152000 08:03 4595484                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/netty-all-4.0.14.Final.jar
+7f37dfce0000-7f37dfcf8000 r--s 00110000 08:03 4595461                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/netty-3.7.0.Final.jar
+7f37dfcf8000-7f37dfcfb000 r--s 0000f000 08:03 4595545                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/neethi-3.0.1.jar
+7f37dfcfb000-7f37dfcfe000 r--s 00012000 08:03 4595582                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/metrics-core-3.0.0.jar
+7f37dfcfe000-7f37dfd05000 r--s 0004e000 08:03 4595506                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/libthrift-0.9.0.jar
+7f37dfd05000-7f37dfd0c000 r--s 0003d000 08:03 4595505                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/libfb303-0.9.0.jar
+7f37dfd0c000-7f37dfd99000 r--s 0075e000 08:03 4595494                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jython-2.5.3.jar
+7f37dfd99000-7f37dfd9a000 r--s 00003000 08:03 4595522                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jta-1.1.jar
+7f37dfd9a000-7f37dfd9c000 r--s 0000a000 08:03 4595552                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jsr311-api-1.1.1.jar
+7f37dfd9c000-7f37dfd9e000 r--s 0000a000 08:03 4595493                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/json-20090211.jar
+7f37dfd9e000-7f37dfda0000 r--s 0000e000 08:03 4595477                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jol-core-0.1.jar
+7f37dfda0000-7f37dfdca000 r--s 001eb000 08:03 4595474                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jmxutils-1.16.jar
+7f37dfdca000-7f37dfdcc000 r--s 00014000 08:03 4595489                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jline-0.9.94.jar
+7f37dfdcc000-7f37dfdd0000 r--s 00028000 08:03 4595513                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jetty-util-6.1.26.jar
+7f37dfdd0000-7f37dfdd7000 r--s 0007d000 08:03 4595512                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jetty-6.1.26.jar
+7f37dfdd7000-7f37dfdd9000 r--s 00012000 08:03 4595561                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jettison-1.3.3.jar
+7f37dfdd9000-7f37dfddd000 r--s 00024000 08:03 4595576                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jersey-json-1.17.jar
+7f37dfddd000-7f37dfde8000 r--s 00068000 08:03 4595581                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jersey-core-1.17.jar
+7f37dfde8000-7f37dfded000 r--s 0002c000 08:03 4595521                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jdo2-api-2.3-ec.jar
+7f37dfded000-7f37dfdff000 r--s 000c9000 08:03 4595548                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jaxb-impl-2.2.4-1.jar
+7f37dfdff000-7f37dfe03000 r--s 00017000 08:03 4595577                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jaxb-api-2.2.3.jar
+7f37dfe03000-7f37dfe0b000 r--s 00059000 08:03 4595530                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/javolution-5.5.1.jar
+7f37dfe0b000-7f37dfe0c000 r--s 00000000 08:03 4595455                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/javax.inject-1.jar
+7f37dfe0c000-7f37dfe0e000 r--s 00003000 08:03 4595529                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/JavaEWAH-0.3.2.jar
+7f37dfe0e000-7f37dfe0f000 r--s 00006000 08:03 4595580                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-xc-1.9.2.jar
+7f37dfe0f000-7f37dfe1d000 r--s 000ad000 08:03 4595491                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-mapper-asl-1.9.2.jar
+7f37dfe1d000-7f37dfe2d000 r--s 000d2000 08:03 4595572                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-databind-2.1.2.jar
+7f37dfe2d000-7f37dfe31000 r--s 00034000 08:03 4595490                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-core-asl-1.9.2.jar
+7f37dfe31000-7f37dfe35000 r--s 0002f000 08:03 4595571                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-core-2.1.2.jar
+7f37dfe35000-7f37dfe3a000 r--s 00028000 08:03 4595508                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/httpcore-4.1.3.jar
+7f37dfe3a000-7f37dfe43000 r--s 0004e000 08:03 4595507                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/httpclient-4.1.3.jar
+7f37dfe43000-7f37dfe7c000 r--s 002e4000 08:03 4595499                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-metastore-0.11.0.jar
+7f37dfe7c000-7f37dfedb000 r--s 00599000 08:03 4595498                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-exec-0.11.0.jar
+7f37dfedb000-7f37e0000000 r--s 00ec4000 08:03 4595486                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/fastutil-6.5.4.jar
+7f37e0000000-7f37e066c000 rw-p 00000000 00:00 0 
+7f37e066c000-7f37e4000000 ---p 00000000 00:00 0 
+7f37e4000000-7f37e4021000 rw-p 00000000 00:00 0 
+7f37e4021000-7f37e8000000 ---p 00000000 00:00 0 
+7f37e8000000-7f37e8021000 rw-p 00000000 00:00 0 
+7f37e8021000-7f37ec000000 ---p 00000000 00:00 0 
+7f37ec000000-7f37ec851000 rw-p 00000000 00:00 0 
+7f37ec851000-7f37f0000000 ---p 00000000 00:00 0 
+7f37f0000000-7f37f0021000 rw-p 00000000 00:00 0 
+7f37f0021000-7f37f4000000 ---p 00000000 00:00 0 
+7f37f4000000-7f37f4021000 rw-p 00000000 00:00 0 
+7f37f4021000-7f37f8000000 ---p 00000000 00:00 0 
+7f37f8000000-7f37f8026000 rw-p 00000000 00:00 0 
+7f37f8026000-7f37fc000000 ---p 00000000 00:00 0 
+7f37fc000000-7f37fc250000 rw-p 00000000 00:00 0 
+7f37fc250000-7f3800000000 ---p 00000000 00:00 0 
+7f3800000000-7f3800022000 rw-p 00000000 00:00 0 
+7f3800022000-7f3804000000 ---p 00000000 00:00 0 
+7f3804000000-7f3804021000 rw-p 00000000 00:00 0 
+7f3804021000-7f3808000000 ---p 00000000 00:00 0 
+7f3808000000-7f3808021000 rw-p 00000000 00:00 0 
+7f3808021000-7f380c000000 ---p 00000000 00:00 0 
+7f380c000000-7f380c001000 r--s 00004000 08:03 4595579                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-jaxrs-1.9.2.jar
+7f380c001000-7f380c002000 r--s 00003000 08:03 4595570                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-datatype-json-org-2.1.2.jar
+7f380c002000-7f380c004000 r--s 00007000 08:03 4595475                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/jackson-annotations-2.1.4.jar
+7f380c004000-7f380c00a000 r--s 0003b000 08:03 4595533                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-service-0.10.0.jar
+7f380c00a000-7f380c00b000 r--s 00003000 08:03 4595531                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-pdk-0.10.0.jar
+7f380c00b000-7f380c011000 r--s 0007c000 08:03 4595534                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-io-exp-core-0.26.jar
+7f380c011000-7f380c013000 r--s 00001000 08:03 4595488                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/slf4j-log4j12-1.7.5.jar
+7f380c013000-7f380c01c000 r--s 0006f000 08:03 4595483                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/log4j-1.2.17.jar
+7f380c01c000-7f380c01e000 r--s 00005000 08:03 4595462                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/slf4j-api-1.7.5.jar
+7f380c01e000-7f380c025000 r--s 00062000 08:03 4595537                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/sigar-1.6.5.132-5.jar
+7f380c025000-7f380c028000 r--s 00012000 08:03 4595480                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/metrics-core-2.2.0.jar
+7f380c028000-7f380c029000 r--s 00004000 08:03 4595535                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/reflectasm-1.07.jar
+7f380c029000-7f380c02a000 r--s 00007000 08:03 4595532                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-cli-0.10.0.jar
+7f380c02a000-7f380c02f000 r--s 00036000 08:03 4595496                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hcatalog-core-0.5.0-incubating.jar
+7f380c02f000-7f380c031000 r--s 00007000 08:03 4595458                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/guice-multibindings-3.0.jar
+7f380c031000-7f380c040000 r--s 0009f000 08:03 4595456                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/guice-3.0.jar
+7f380c040000-7f380c069000 r--s 001ee000 08:03 4595479                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/guava-14.0.1.jar
+7f380c069000-7f380c06c000 r--s 00024000 08:03 4595538                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/gora-core-0.5.jar
+7f380c06c000-7f380c071000 r--s 0002b000 08:03 4595495                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/giraph-core-1.1.0-tests.jar
+7f380c071000-7f380c076000 r--s 00032000 08:03 4595549                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/geronimo-javamail_1.4_spec-1.7.1.jar
+7f380c076000-7f380c0a0000 rw-p 00000000 00:00 0 
+7f380c0a0000-7f380c0c6000 r--s 00230000 08:03 4595523                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/derby-10.4.2.0.jar
+7f380c0c6000-7f380c0d5000 r--s 0011d000 08:03 4595520                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/datanucleus-rdbms-2.0.3.jar
+7f380c0d5000-7f380c0f0000 r--s 001ce000 08:03 4595519                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/datanucleus-core-2.0.3.jar
+7f380c0f0000-7f380c0f2000 r--s 00003000 08:03 4595518                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/datanucleus-connectionpool-2.0.3.jar
+7f380c0f2000-7f380c0f7000 r--s 0002f000 08:03 4595554                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-rt-transports-http-2.5.2.jar
+7f380c0f7000-7f380c0f9000 r--s 00003000 08:03 4595555                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-rt-transports-common-2.5.2.jar
+7f380c0f9000-7f380c102000 r--s 0008b000 08:03 4595539                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-rt-frontend-jaxrs-2.5.2.jar
+7f380c102000-7f380c10b000 r--s 0007d000 08:03 4595547                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-rt-core-2.5.2.jar
+7f380c10b000-7f380c10d000 r--s 00008000 08:03 4595553                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-rt-bindings-xml-2.5.2.jar
+7f380c10d000-7f380c114000 r--s 0004f000 08:03 4595540                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-common-utilities-2.5.2.jar
+7f380c114000-7f380c11e000 r--s 0004f000 08:03 4595544                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cxf-api-2.5.2.jar
+7f380c11e000-7f380c120000 r--s 0000c000 08:03 4595468                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/configuration-0.91.jar
+7f380c120000-7f380c127000 r--s 00028000 08:03 4595574                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/concurrent-1.3.4.jar
+7f380c127000-7f380c12a000 r--s 00015000 08:03 4595517                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-pool-1.5.4.jar
+7f380c12a000-7f380c12f000 r--s 00041000 08:03 4595566                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-lang-2.6.jar
+7f380c12f000-7f380c135000 r--s 00048000 08:03 4595471                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-lang3-3.1.jar
+7f380c135000-7f380c138000 r--s 00025000 08:03 4595482                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-io-2.1.jar
+7f380c138000-7f380c13c000 r--s 00020000 08:03 4595526                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-digester-1.8.jar
+7f380c13c000-7f380c13f000 r--s 00025000 08:03 4595516                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-dbcp-1.4.jar
+7f380c13f000-7f380c145000 r--s 00043000 08:03 4595525                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-configuration-1.6.jar
+7f380c145000-7f380c14a000 r--s 00036000 08:03 4595564                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-compress-1.4.1.jar
+7f380c14a000-7f380c151000 r--s 0003a000 08:03 4595509                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-codec-1.8.jar
+7f380c151000-7f380c153000 r--s 00009000 08:03 4595481                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-cli-1.2.jar
+7f380c153000-7f380c157000 r--s 0002f000 08:03 4595528                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-beanutils-core-1.8.0.jar
+7f380c157000-7f380c15c000 r--s 0002a000 08:03 4595527                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/commons-beanutils-1.7.0.jar
+7f380c15c000-7f380c16a000 r--s 00081000 08:03 4595573                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/colt-1.2.0.jar
+7f380c16a000-7f380c170000 r--s 0004a000 08:03 4595472                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/cglib-nodep-2.2.2.jar
+7f380c170000-7f380c176000 r--s 00037000 08:03 4595469                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/bval-jsr303-0.5.jar
+7f380c176000-7f380c179000 r--s 0000d000 08:03 4595470                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/bval-core-0.5.jar
+7f380c179000-7f380c180000 r--s 00039000 08:03 4595568                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/blueprints-core-2.4.0.jar
+7f380c180000-7f380c182000 r--s 00003000 08:03 4595485                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/base64-2.3.8.jar
+7f380c182000-7f380c187000 r--s 00026000 08:03 4595510                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/avro-mapred-1.7.6.jar
+7f380c187000-7f380c18e000 r--s 0004e000 08:03 4595567                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/avro-ipc-1.7.6-tests.jar
+7f380c18e000-7f380c192000 r--s 0002c000 08:03 4595511                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/avro-ipc-1.7.6.jar
+7f380c192000-7f380c19a000 r--s 00060000 08:03 4595562                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/avro-1.7.6.jar
+7f380c19a000-7f380c19c000 r--s 0000a000 08:03 4595536                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/asm-4.0.jar
+7f380c19c000-7f380c19e000 r--s 00000000 08:03 4595457                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/aopalliance-1.0.jar
+7f380c19e000-7f380c1a2000 r--s 00025000 08:03 4595501                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/antlr-runtime-3.4.jar
+7f380c1a2000-7f380c1bb000 r--s 00124000 08:03 4595583                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/giraph-core-1.1.0.jar
+7f380c1bb000-7f380c1bc000 ---p 00000000 00:00 0 
+7f380c1bc000-7f380c2bc000 rw-p 00000000 00:00 0                          [stack:9479]
+7f380c2bc000-7f380c2bf000 ---p 00000000 00:00 0 
+7f380c2bf000-7f380c3bd000 rw-p 00000000 00:00 0                          [stack:9478]
+7f380c3bd000-7f380c3c0000 ---p 00000000 00:00 0 
+7f380c3c0000-7f380c4be000 rw-p 00000000 00:00 0                          [stack:9477]
+7f380c4be000-7f380c4c1000 ---p 00000000 00:00 0 
+7f380c4c1000-7f380c5bf000 rw-p 00000000 00:00 0                          [stack:9476]
+7f380c5bf000-7f380c5c2000 ---p 00000000 00:00 0 
+7f380c5c2000-7f380c6c0000 rw-p 00000000 00:00 0                          [stack:9475]
+7f380c6c0000-7f380cda2000 r--p 00000000 08:03 1973257                    /usr/lib/locale/locale-archive
+7f380cda2000-7f380cda5000 ---p 00000000 00:00 0 
+7f380cda5000-7f380cea3000 rw-p 00000000 00:00 0                          [stack:9474]
+7f380cea3000-7f380cea6000 ---p 00000000 00:00 0 
+7f380cea6000-7f380cfa4000 rw-p 00000000 00:00 0                          [stack:9473]
+7f380cfa4000-7f380cfa5000 ---p 00000000 00:00 0 
+7f380cfa5000-7f380e0a2000 rw-p 00000000 00:00 0                          [stack:9472]
+7f380e0a2000-7f380e254000 r--s 01d23000 08:03 3180405                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar
+7f380e254000-7f3810888000 rw-p 00000000 00:00 0 
+7f3810888000-7f3810889000 ---p 00000000 00:00 0 
+7f3810889000-7f3810989000 rw-p 00000000 00:00 0                          [stack:9471]
+7f3810989000-7f381098a000 ---p 00000000 00:00 0 
+7f381098a000-7f3810a8a000 rw-p 00000000 00:00 0                          [stack:9470]
+7f3810a8a000-7f3810a8b000 ---p 00000000 00:00 0 
+7f3810a8b000-7f3810b8b000 rw-p 00000000 00:00 0                          [stack:9467]
+7f3810b8b000-7f3810b8c000 ---p 00000000 00:00 0 
+7f3810b8c000-7f3810d26000 rw-p 00000000 00:00 0                          [stack:9466]
+7f3810d26000-7f3810dcc000 rw-p 00000000 00:00 0 
+7f3810dcc000-7f3810ddf000 rw-p 00000000 00:00 0 
+7f3810ddf000-7f3810de1000 ---p 00000000 00:00 0 
+7f3810de1000-7f3810e1f000 rw-p 00000000 00:00 0 
+7f3810e1f000-7f3810eb9000 rw-p 00000000 00:00 0 
+7f3810eb9000-7f3810f5f000 rw-p 00000000 00:00 0 
+7f3810f5f000-7f3810fff000 rw-p 00000000 00:00 0 
+7f3810fff000-7f3811000000 rw-p 00000000 00:00 0 
+7f3811000000-7f3811270000 rwxp 00000000 00:00 0 
+7f3811270000-7f381491a000 rw-p 00000000 00:00 0 
+7f381491a000-7f3818000000 ---p 00000000 00:00 0 
+7f3818000000-7f3818001000 r--s 00000000 08:03 4595497                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/hive-builtins-0.10.0.jar
+7f3818001000-7f381800c000 r--s 00105000 08:03 4595500                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/antlr-3.4.jar
+7f381800c000-7f3818011000 r--s 00068000 08:03 4595503                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/antlr-2.7.7.jar
+7f3818011000-7f3818015000 r--s 0000f000 08:03 4595463                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/annotations-2.0.2.jar
+7f3818015000-7f3818017000 r--s 0000e000 08:03 4595578                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/lib/activation-1.1.jar
+7f3818017000-7f3818052000 rw-p 00000000 00:00 0 
+7f3818052000-7f3818054000 ---p 00000000 00:00 0 
+7f3818054000-7f3818092000 rw-p 00000000 00:00 0 
+7f3818092000-7f381809a000 r-xp 00000000 08:03 3421507                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libzip.so
+7f381809a000-7f3818299000 ---p 00008000 08:03 3421507                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libzip.so
+7f3818299000-7f381829a000 r--p 00007000 08:03 3421507                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libzip.so
+7f381829a000-7f381829b000 rw-p 00008000 08:03 3421507                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libzip.so
+7f381829b000-7f38182a6000 r-xp 00000000 08:03 3808095                    /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f38182a6000-7f38184a5000 ---p 0000b000 08:03 3808095                    /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f38184a5000-7f38184a6000 r--p 0000a000 08:03 3808095                    /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f38184a6000-7f38184a7000 rw-p 0000b000 08:03 3808095                    /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f38184a7000-7f38184b2000 r-xp 00000000 08:03 3808092                    /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f38184b2000-7f38186b1000 ---p 0000b000 08:03 3808092                    /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f38186b1000-7f38186b2000 r--p 0000a000 08:03 3808092                    /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f38186b2000-7f38186b3000 rw-p 0000b000 08:03 3808092                    /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f38186b3000-7f38186ca000 r-xp 00000000 08:03 3808086                    /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f38186ca000-7f38188c9000 ---p 00017000 08:03 3808086                    /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f38188c9000-7f38188ca000 r--p 00016000 08:03 3808086                    /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f38188ca000-7f38188cb000 rw-p 00017000 08:03 3808086                    /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f38188cb000-7f38188cd000 rw-p 00000000 00:00 0 
+7f38188cd000-7f38188d6000 r-xp 00000000 08:03 3808083                    /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f38188d6000-7f3818ad5000 ---p 00009000 08:03 3808083                    /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3818ad5000-7f3818ad6000 r--p 00008000 08:03 3808083                    /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3818ad6000-7f3818ad7000 rw-p 00009000 08:03 3808083                    /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f3818ad7000-7f3818b02000 r-xp 00000000 08:03 3421494                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjava.so
+7f3818b02000-7f3818d02000 ---p 0002b000 08:03 3421494                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjava.so
+7f3818d02000-7f3818d03000 r--p 0002b000 08:03 3421494                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjava.so
+7f3818d03000-7f3818d05000 rw-p 0002c000 08:03 3421494                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjava.so
+7f3818d05000-7f3818d15000 r-xp 00000000 08:03 3421493                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libverify.so
+7f3818d15000-7f3818f14000 ---p 00010000 08:03 3421493                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libverify.so
+7f3818f14000-7f3818f16000 r--p 0000f000 08:03 3421493                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libverify.so
+7f3818f16000-7f3818f17000 rw-p 00011000 08:03 3421493                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libverify.so
+7f3818f17000-7f3818f1e000 r-xp 00000000 08:03 3808078                    /lib/x86_64-linux-gnu/librt-2.19.so
+7f3818f1e000-7f381911d000 ---p 00007000 08:03 3808078                    /lib/x86_64-linux-gnu/librt-2.19.so
+7f381911d000-7f381911e000 r--p 00006000 08:03 3808078                    /lib/x86_64-linux-gnu/librt-2.19.so
+7f381911e000-7f381911f000 rw-p 00007000 08:03 3808078                    /lib/x86_64-linux-gnu/librt-2.19.so
+7f381911f000-7f3819135000 r-xp 00000000 08:03 3805097                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f3819135000-7f3819334000 ---p 00016000 08:03 3805097                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f3819334000-7f3819335000 rw-p 00015000 08:03 3805097                    /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f3819335000-7f381943a000 r-xp 00000000 08:03 3808085                    /lib/x86_64-linux-gnu/libm-2.19.so
+7f381943a000-7f3819639000 ---p 00105000 08:03 3808085                    /lib/x86_64-linux-gnu/libm-2.19.so
+7f3819639000-7f381963a000 r--p 00104000 08:03 3808085                    /lib/x86_64-linux-gnu/libm-2.19.so
+7f381963a000-7f381963b000 rw-p 00105000 08:03 3808085                    /lib/x86_64-linux-gnu/libm-2.19.so
+7f381963b000-7f3819721000 r-xp 00000000 08:03 1975237                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f3819721000-7f3819920000 ---p 000e6000 08:03 1975237                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f3819920000-7f3819928000 r--p 000e5000 08:03 1975237                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f3819928000-7f381992a000 rw-p 000ed000 08:03 1975237                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.19
+7f381992a000-7f381993f000 rw-p 00000000 00:00 0 
+7f381993f000-7f381a457000 r-xp 00000000 08:03 3803530                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f381a457000-7f381a657000 ---p 00b18000 08:03 3803530                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f381a657000-7f381a6f1000 r--p 00b18000 08:03 3803530                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f381a6f1000-7f381a714000 rw-p 00bb2000 08:03 3803530                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so
+7f381a714000-7f381a742000 rw-p 00000000 00:00 0 
+7f381a742000-7f381a75a000 r-xp 00000000 08:03 3805283                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f381a75a000-7f381a959000 ---p 00018000 08:03 3805283                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f381a959000-7f381a95a000 r--p 00017000 08:03 3805283                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f381a95a000-7f381a95b000 rw-p 00018000 08:03 3805283                    /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f381a95b000-7f381a974000 r-xp 00000000 08:03 3808094                    /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f381a974000-7f381ab73000 ---p 00019000 08:03 3808094                    /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f381ab73000-7f381ab74000 r--p 00018000 08:03 3808094                    /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f381ab74000-7f381ab75000 rw-p 00019000 08:03 3808094                    /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f381ab75000-7f381ab79000 rw-p 00000000 00:00 0 
+7f381ab79000-7f381ab7c000 r-xp 00000000 08:03 3808081                    /lib/x86_64-linux-gnu/libdl-2.19.so
+7f381ab7c000-7f381ad7b000 ---p 00003000 08:03 3808081                    /lib/x86_64-linux-gnu/libdl-2.19.so
+7f381ad7b000-7f381ad7c000 r--p 00002000 08:03 3808081                    /lib/x86_64-linux-gnu/libdl-2.19.so
+7f381ad7c000-7f381ad7d000 rw-p 00003000 08:03 3808081                    /lib/x86_64-linux-gnu/libdl-2.19.so
+7f381ad7d000-7f381af38000 r-xp 00000000 08:03 3808077                    /lib/x86_64-linux-gnu/libc-2.19.so
+7f381af38000-7f381b138000 ---p 001bb000 08:03 3808077                    /lib/x86_64-linux-gnu/libc-2.19.so
+7f381b138000-7f381b13c000 r--p 001bb000 08:03 3808077                    /lib/x86_64-linux-gnu/libc-2.19.so
+7f381b13c000-7f381b13e000 rw-p 001bf000 08:03 3808077                    /lib/x86_64-linux-gnu/libc-2.19.so
+7f381b13e000-7f381b143000 rw-p 00000000 00:00 0 
+7f381b143000-7f381b150000 r-xp 00000000 08:03 3677423                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/jli/libjli.so
+7f381b150000-7f381b34f000 ---p 0000d000 08:03 3677423                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/jli/libjli.so
+7f381b34f000-7f381b350000 r--p 0000c000 08:03 3677423                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/jli/libjli.so
+7f381b350000-7f381b351000 rw-p 0000d000 08:03 3677423                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/jli/libjli.so
+7f381b351000-7f381b374000 r-xp 00000000 08:03 3808075                    /lib/x86_64-linux-gnu/ld-2.19.so
+7f381b374000-7f381b378000 r--s 0001d000 08:03 4595588                    /home/nishant/Downloads/giraph-1.1.0-for-hadoop-1.2.1/giraph-examples-1.1.0.jar
+7f381b378000-7f381b398000 rw-p 00000000 00:00 0 
+7f381b398000-7f381b44e000 rw-p 00000000 00:00 0 
+7f381b44e000-7f381b451000 ---p 00000000 00:00 0 
+7f381b451000-7f381b554000 rw-p 00000000 00:00 0                          [stack:9463]
+7f381b554000-7f381b555000 r--s 00002000 08:03 3677421                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext/dnsns.jar
+7f381b555000-7f381b559000 r--s 0003c000 08:03 3673780                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext/sunpkcs11.jar
+7f381b559000-7f381b55b000 r--s 00012000 08:03 3675160                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext/zipfs.jar
+7f381b55b000-7f381b55d000 r--s 00006000 08:03 2369052                    /usr/share/java/java-atk-wrapper.jar
+7f381b55d000-7f381b560000 r--s 0000f000 08:03 3673572                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext/icedtea-sound.jar
+7f381b560000-7f381b564000 r--s 00034000 08:03 3675158                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext/sunjce_provider.jar
+7f381b564000-7f381b567000 r--s 00086000 08:03 3677422                    /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext/localedata.jar
+7f381b567000-7f381b56f000 rw-s 00000000 08:03 786730                     /tmp/hsperfdata_nishant/9461
+7f381b56f000-7f381b570000 rw-p 00000000 00:00 0 
+7f381b570000-7f381b571000 ---p 00000000 00:00 0 
+7f381b571000-7f381b573000 rw-p 00000000 00:00 0 
+7f381b573000-7f381b574000 r--p 00022000 08:03 3808075                    /lib/x86_64-linux-gnu/ld-2.19.so
+7f381b574000-7f381b575000 rw-p 00023000 08:03 3808075                    /lib/x86_64-linux-gnu/ld-2.19.so
+7f381b575000-7f381b576000 rw-p 00000000 00:00 0 
+7fff60172000-7fff60196000 rw-p 00000000 00:00 0                          [stack]
+7fff601a9000-7fff601ab000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: iitp.giraph.util.GiraphApplicationRunner -D giraph.useSuperstepCounters=false -Xmx2048m
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+USERNAME=nishant
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x94b4b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x94b4b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x7c3390], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x7c3390], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x7c3390], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x7c3390], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x7c3230], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x7c3410], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x7c3410], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x7c3410], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x7c3410], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTRAP: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Ubuntu 14.04 (trusty)
+uname:Linux 3.13.0-46-generic #75-Ubuntu SMP Tue Feb 10 15:24:04 UTC 2015 x86_64
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 30524, NOFILE 4096, AS infinity
+load average:9.94 5.27 2.86
+
+/proc/meminfo:
+MemTotal:        3928732 kB
+MemFree:          110876 kB
+Buffers:             132 kB
+Cached:           327600 kB
+SwapCached:            0 kB
+Active:          3324716 kB
+Inactive:         322972 kB
+Active(anon):    3322864 kB
+Inactive(anon):   317972 kB
+Active(file):       1852 kB
+Inactive(file):     5000 kB
+Unevictable:          16 kB
+Mlocked:              16 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               112 kB
+Writeback:             0 kB
+AnonPages:       3320344 kB
+Mapped:            73468 kB
+Shmem:            320508 kB
+Slab:              63168 kB
+SReclaimable:      25788 kB
+SUnreclaim:        37380 kB
+KernelStack:        5432 kB
+PageTables:        42556 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1964364 kB
+Committed_AS:    7754568 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      400208 kB
+VmallocChunk:   34359307988 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:    925696 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      106516 kB
+DirectMap2M:     3969024 kB
+
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, ht, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2350M CPU @ 2.30GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2300.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer xsave avx lahf_lm arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4589.52
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2350M CPU @ 2.30GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2300.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer xsave avx lahf_lm arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4589.52
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2350M CPU @ 2.30GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2300.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer xsave avx lahf_lm arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4589.52
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 42
+model name	: Intel(R) Core(TM) i3-2350M CPU @ 2.30GHz
+stepping	: 7
+microcode	: 0x28
+cpu MHz		: 2300.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer xsave avx lahf_lm arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4589.52
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3928732k(113584k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (24.75-b04) for linux-amd64 JRE (1.7.0_75-b13), built on Jan 27 2015 00:38:59 by "buildd" with gcc 4.8.2
+
+time: Sat Feb 21 18:22:34 2015
+elapsed time: 51 seconds
+
