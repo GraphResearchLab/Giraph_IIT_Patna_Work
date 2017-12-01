@@ -1,4 +1,4 @@
-#Graph Coloring Algorithms using Apache Giraph
+# Graph Coloring Algorithms using Apache Giraph
 
 The implementation work related to the following publication:
 
